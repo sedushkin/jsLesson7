@@ -8,10 +8,19 @@ const change = (cart, req) => {
   return JSON.stringify(cart, null, 4);
 };
 const del = (cart, req) => {
-
+  const find = cart.contents.find(el => el.id_product === +req.params.id);
+  cart.contents.splice(req.body,1);
+  return JSON.stringify(cart, null, 4);
 };
+
+// const changeStats = (stats, req) => {
+//   stats.contents.push(req.body);
+//   return JSON.stringify(stats, null, 4);
+// };
 
 module.exports = {
   add,
   change,
+  del,
+  // changeStats,
 };

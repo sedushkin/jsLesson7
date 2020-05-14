@@ -20,6 +20,26 @@ router.post('/', (req, res) => {
 // localhost:3000/api/cart/?var1='sfsf'&var2='ada' // req.query
 router.put('/:id', (req, res) => {
   handler(req, res, 'change', './server/db/userCart.json');
+
 });
+
+router.delete('/:id', (req, res) => {
+  handler(req, res, 'del', './server/db/userCart.json');
+});
+
+// router.put('/stat', (req,res) => {
+//   handler(req, res, 'change', './server/db/stats.json')
+//     }
+//
+// );
+// router.changeStats('/', (req, res) => {
+//   fs.readFile('./server/db/stats.json', 'utf-8', (err, data) => {
+//     if (err) {
+//       res.sendStatus(404, JSON.stringify({result: 0, text: err}));
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// });
 
 module.exports = router;
