@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use('/', express.static('./public'));
 app.use('/api/cart', cartRouter);
-app.use('/api/stat', cartRouter);
+// app.use('/api/stat', cartRouter);
 
 // Base routes
 app.get('/api/products', (req, res) => {

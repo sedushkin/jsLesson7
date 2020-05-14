@@ -5,7 +5,7 @@ Vue.component('cart', {
           cartUrl: '/getBasket.json',
           cartItems: [],
           showCart: false,
-          // thisDate: 'thisDate',
+          thisDate: 'thisDate',
       }
     },
     methods: {
@@ -15,7 +15,7 @@ Vue.component('cart', {
                 this.$parent.putJson(`/api/cart/${find.id_product}`, {quantity: 1});
                 find.quantity++;
 
-                // this.$parent.putJson(`/api/stat/`, {status: 'добавлено количество', date: `${thisDate}`, name: find.product_name});
+                // this.$parent.putJson(`/api/stat`, {status: 'добавлено количество', date: `${thisDate}`, name: find.product_name});
             } else {
                 let prod = Object.assign({quantity: 1}, product);
                 this.$parent.postJson('/api/cart', prod)
@@ -39,14 +39,7 @@ Vue.component('cart', {
                 this.$parent.deleteJson(`/api/cart/${find.id_product}`, find)
                     .then(data => {
                         if (data.result === 1) {
-                            let element;
-                            this.cartItems.forEach(function (isProduct, i) {
-                                let id = isProduct.id_product;
-                                if (item.product_id == id) {
-                                    element = i;
-                                }
-                            });
-                            this.cartItems.splice(element, 1);
+                           this.cartItems.splice(this.cartItems.indexOf(item), 1);
                             // this.$parent.changeStatsJson(`/api/cart/${find.id_product}`, {status: 'Удалён продукт', date: dateTime, name: find.product_name});
                         }
                     });

@@ -27,6 +27,11 @@ router.delete('/:id', (req, res) => {
   handler(req, res, 'del', './server/db/userCart.json');
 });
 
+// router.put('/stat', (req,res) => {
+//   handler(req, res, 'change', './server/db/stats.json')
+//     }
+//
+// );
 // router.changeStats('/', (req, res) => {
 //   fs.readFile('./server/db/stats.json', 'utf-8', (err, data) => {
 //     if (err) {
