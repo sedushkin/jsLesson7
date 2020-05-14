@@ -1,4 +1,4 @@
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
 
 const app = new Vue({
     el: '#app',
@@ -38,7 +38,16 @@ const app = new Vue({
               });
         },
         deleteJson(url, data) {
-
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(result => result.json())
+                .catch(error => {
+                    this.$refs.error.setError(error);
+                });
         },
     },
     mounted() {
