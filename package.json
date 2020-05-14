@@ -1,0 +1,27 @@
+{
+  "name": "jslesson7",
+  "version": "0.0.1",
+  "description": "homework for lesson 7 (js)",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sedushkin/jsLesson7.git"
+  },
+  "keywords": [
+    "js",
+    "lesson"
+  ],
+  "author": "sedushkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sedushkin/jsLesson7/issues"
+  },
+  "homepage": "https://github.com/sedushkin/jsLesson7#readme"
+}
