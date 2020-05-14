@@ -5,6 +5,7 @@ Vue.component('cart', {
           cartUrl: '/getBasket.json',
           cartItems: [],
           showCart: false,
+          // thisDate: 'thisDate',
       }
     },
     methods: {
@@ -13,12 +14,16 @@ Vue.component('cart', {
             if(find){
                 this.$parent.putJson(`/api/cart/${find.id_product}`, {quantity: 1});
                 find.quantity++;
+
+                // this.$parent.putJson(`/api/stat/`, {status: 'добавлено количество', date: `${thisDate}`, name: find.product_name});
             } else {
                 let prod = Object.assign({quantity: 1}, product);
                 this.$parent.postJson('/api/cart', prod)
                   .then(data => {
                       if (data.result === 1) {
                           this.cartItems.push(prod);
+
+                          // this.$parent.changeStatsJson(`/api/stat/${prod.id_product}`, {status: 'Добавлен продукт', date: `${thisDate}`, name: prod.product_name});
                       }
                   });
             }
@@ -29,6 +34,7 @@ Vue.component('cart', {
             if(find.quantity>1) {
                 this.$parent.putJson(`/api/cart/${find.id_product}`, {quantity: -1});
                 find.quantity--;
+                // this.$parent.changeStatsJson(`/api/cart/${find.id_product}`, {status: 'Уменьшено количество', date: dateTime, name: find.product_name});
             }else {
                 this.$parent.deleteJson(`/api/cart/${find.id_product}`, find)
                     .then(data => {
@@ -41,13 +47,17 @@ Vue.component('cart', {
                                 }
                             });
                             this.cartItems.splice(element, 1);
+                            // this.$parent.changeStatsJson(`/api/cart/${find.id_product}`, {status: 'Удалён продукт', date: dateTime, name: find.product_name});
                         }
                     });
+
             }
          },
+
     },
+
     mounted(){
-        this.$parent.getJson(`${API + this.cartUrl}`)
+        this.$parent.getJson(`/api/cart`)
             .then(data => {
                 for(let el of data.contents){
                     this.cartItems.push(el);

@@ -1,5 +1,5 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-
+const thisDate = new Date();
 const app = new Vue({
     el: '#app',
     data: {
@@ -49,6 +49,18 @@ const app = new Vue({
                     this.$refs.error.setError(error);
                 });
         },
+        // changeStatsJson(url, data) {
+        //     return fetch(url, {
+        //         method: 'PUT',
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(data)
+        //     }).then(result => result.json())
+        //         .catch(error => {
+        //             this.$refs.error.setError(error);
+        //         });
+        // },
     },
     mounted() {
         console.log(this);

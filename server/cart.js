@@ -13,8 +13,14 @@ const del = (cart, req) => {
   return JSON.stringify(cart, null, 4);
 };
 
+// const changeStats = (stats, req) => {
+//   stats.contents.push(req.body);
+//   return JSON.stringify(stats, null, 4);
+// };
+
 module.exports = {
   add,
   change,
   del,
+  // changeStats,
 };

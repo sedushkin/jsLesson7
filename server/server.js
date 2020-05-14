@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 app.use('/', express.static('./public'));
 app.use('/api/cart', cartRouter);
+app.use('/api/stat', cartRouter);
 
 // Base routes
 app.get('/api/products', (req, res) => {
@@ -20,6 +21,9 @@ app.get('/api/products', (req, res) => {
     }
   });
 });
+
+
+
 
 // Server start
 const port = process.env.PORT || 3000;
